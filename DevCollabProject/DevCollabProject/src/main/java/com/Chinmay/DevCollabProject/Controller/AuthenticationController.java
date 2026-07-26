@@ -1,7 +1,7 @@
 package com.Chinmay.DevCollabProject.Controller;
 
-import com.Chinmay.DevCollabProject.DTO.AuthRequestDTO;
-import com.Chinmay.DevCollabProject.DTO.AuthResponseDTO;
+import com.Chinmay.DevCollabProject.DTO.AuthDTO.AuthRequestDTO;
+import com.Chinmay.DevCollabProject.DTO.AuthDTO.AuthResponseDTO;
 import com.Chinmay.DevCollabProject.Service.AuthenticationServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

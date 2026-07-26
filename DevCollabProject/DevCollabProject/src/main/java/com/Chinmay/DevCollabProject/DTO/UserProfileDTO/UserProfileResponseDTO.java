@@ -1,4 +1,4 @@
-package com.Chinmay.DevCollabProject.DTO;
+package com.Chinmay.DevCollabProject.DTO.UserProfileDTO;
 
 
 import lombok.Builder;
@@ -8,6 +8,8 @@ import lombok.Data;
 @Builder
 public class UserProfileResponseDTO {
 
+
+    private Long id;
     private String name;
     private String email;
     private String username;

@@ -1,9 +1,9 @@
 package com.Chinmay.DevCollabProject.ServiceImpl;
 
-import com.Chinmay.DevCollabProject.DTO.AuthRequestDTO;
-import com.Chinmay.DevCollabProject.DTO.AuthResponseDTO;
-import com.Chinmay.DevCollabProject.Model.UserProfileEntity;
-import com.Chinmay.DevCollabProject.Model.UserRole;
+import com.Chinmay.DevCollabProject.DTO.AuthDTO.AuthRequestDTO;
+import com.Chinmay.DevCollabProject.DTO.AuthDTO.AuthResponseDTO;
+import com.Chinmay.DevCollabProject.Model.Entity.UserProfile;
+import com.Chinmay.DevCollabProject.Model.Enums.UserRole;
 import com.Chinmay.DevCollabProject.Repository.UserProfileRepository;
 import com.Chinmay.DevCollabProject.Security.JwtService;
 import com.Chinmay.DevCollabProject.Service.AuthenticationServiceInterface;
@@ -29,7 +29,7 @@ public class AuthenticationServiceImpl implements AuthenticationServiceInterface
     @Override
     public String registerUser(AuthRequestDTO authRequestDTO) {
 
-        UserProfileEntity newUser = new UserProfileEntity();
+        UserProfile newUser = new UserProfile();
         newUser.setEmail(authRequestDTO.getEmail());
         newUser.setPassword(passwordEncoder.encode(authRequestDTO.getPassword()));
         newUser.setRole(UserRole.Role_User);
@@ -44,7 +44,7 @@ public class AuthenticationServiceImpl implements AuthenticationServiceInterface
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequestDTO.getEmail(), authRequestDTO.getPassword()));
 
         String jwtToken=jwtService.generateToken((UserDetails) Objects.requireNonNull(authentication.getPrincipal()));
-        return new AuthResponseDTO(authRequestDTO.getEmail(), jwtToken);
+        return new AuthResponseDTO(jwtToken, authRequestDTO.getEmail());
     }
 
 

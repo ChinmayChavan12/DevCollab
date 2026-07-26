@@ -1,5 +1,6 @@
-package com.Chinmay.DevCollabProject.Model;
+package com.Chinmay.DevCollabProject.Model.Entity;
 
+import com.Chinmay.DevCollabProject.Model.Enums.Vote;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,10 +18,10 @@ public class VoteEntity {
     private Vote vote_type;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private UserProfileEntity user;
+    private UserProfile user;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
-    private UserPostEntity user_post;
+    private UserPost post;
 
 
 }
